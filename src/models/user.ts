@@ -1,9 +1,9 @@
 import mongoose, { Document, Schema } from "mongoose";
 
 export enum Gender {
-  MALE = "male",
-  FEMALE = "female",
-  OTHER = "other",
+  MALE = "MALE",
+  FEMALE = "FEMALE",
+  OTHER = "OTHER",
 }
 
 export interface User extends Document {

@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import dns from "dns";
 import os from "os";
 import connectDB from "./db";
+import routes from "../routers";
 
 const app = express();
 const PORT = process.env.PORT;
@@ -16,6 +17,8 @@ app.listen(PORT, async () => {
 });
 
 connectDB();
+
+app.use("/", routes);
 
 dns.lookup(os.hostname(), (err, address, _family) => {
   if (err) {
