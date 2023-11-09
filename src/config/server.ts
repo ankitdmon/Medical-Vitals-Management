@@ -1,0 +1,25 @@
+import express from "express";
+import bodyParser from "body-parser";
+import dns from "dns";
+import os from "os";
+
+const app = express();
+const PORT = process.env.PORT;
+
+// For JSON inputs
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.listen(PORT, async () => {
+  console.log(`Server is running on PORT: ${PORT}`);
+});
+
+dns.lookup(os.hostname(), (err, address, _family) => {
+  if (err) {
+    console.error("Failed to get IP address:", err);
+  } else {
+    console.log(`Address: ${address}`);
+  }
+});
+
+export default app;
