@@ -23,7 +23,7 @@ export const createUser = async (req: Request, res: Response) => {
 
 export const getUser = async (req: Request, res: Response) => {
   try {
-    const userName = req.params.userName;
+    const userName = req.body.userName;
     const user = await userModel
       .findOne({
         userName: userName,

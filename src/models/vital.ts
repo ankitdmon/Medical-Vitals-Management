@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema } from "mongoose";
 
-enum VitalType {
+export enum VitalType {
   HEART_RATE = "HEART_RATE",
   TEMPERATURE = "Temperature",
 }
