@@ -1,7 +1,4 @@
-import {
-  errorResponse,
-  successResponse,
-} from "../helper/response";
+import { errorResponse, successResponse } from "../helper/response";
 import { Request, Response } from "express";
 import {
   calculatePercentile,

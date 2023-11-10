@@ -7,29 +7,35 @@ import {
   getVitalsSchema,
   insertVitalSchema,
 } from "../validations/validation";
+import {
+  DELETE_VITALS,
+  EDIT_VITAL,
+  GET_VITAL,
+  INSERT_VITAL,
+} from "../validations/endpoints";
 
 const router = express.Router();
 
 router.post(
-  "/vital",
+  INSERT_VITAL,
   validateSchema(insertVitalSchema, ValidationSource.BODY),
   vitalCon.createVital
 );
 
 router.get(
-  "/vital",
+  GET_VITAL,
   validateSchema(getVitalsSchema, ValidationSource.BODY),
   vitalCon.vitals
 );
 
 router.put(
-  "/vital",
+  EDIT_VITAL,
   validateSchema(editVitalSchema, ValidationSource.BODY),
   vitalCon.updateVital
 );
 
 router.delete(
-  "/vital",
+  DELETE_VITALS,
   validateSchema(deleteVitalsSchema, ValidationSource.BODY),
   vitalCon.deleteVital
 );

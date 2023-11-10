@@ -69,7 +69,6 @@ export const updateVital = async (req: Request, res: Response) => {
       return successResponse(
         req,
         res,
-        result,
         `Vital for ${userName} updated successfully.`
       );
     } else {

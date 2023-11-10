@@ -40,10 +40,19 @@ export const vitalValue = async (
   return vitals.length ? vitals[0].average : 0;
 };
 
-export const getPopulationValues = async (vital_id: string, start_timestamp: string, end_timestamp: string) => {
-    return (await VitalModel.find({
-        vitalID: vital_id,
-        timestamp: { $gte: new Date(start_timestamp), $lte: new Date(end_timestamp) },
-        deletedAt: null,
-    })).map(value => value.value);
-  };
+export const getPopulationValues = async (
+  vital_id: string,
+  start_timestamp: string,
+  end_timestamp: string
+) => {
+  return (
+    await VitalModel.find({
+      vitalID: vital_id,
+      timestamp: {
+        $gte: new Date(start_timestamp),
+        $lte: new Date(end_timestamp),
+      },
+      deletedAt: null,
+    })
+  ).map((value) => value.value);
+};

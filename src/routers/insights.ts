@@ -5,17 +5,18 @@ import {
   aggregateSchema,
   populationInsightSchema,
 } from "../validations/validation";
+import { AGGREGATE, POPULATE } from "../validations/endpoints";
 
 const router = express.Router();
 
 router.get(
-  "/aggregate",
+  AGGREGATE,
   validateSchema(aggregateSchema, ValidationSource.BODY),
   insightCon.aggregateVitals
 );
 
 router.get(
-  "/populate",
+  POPULATE,
   validateSchema(populationInsightSchema, ValidationSource.BODY),
   insightCon.populationInsight
 );
