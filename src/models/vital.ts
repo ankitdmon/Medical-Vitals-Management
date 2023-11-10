@@ -2,11 +2,10 @@ import mongoose, { Document, Schema } from "mongoose";
 
 enum VitalType {
   HEART_RATE = "HEART_RATE",
-  TEMPERATURE = "TEMPERATURE",
+  TEMPERATURE = "Temperature",
 }
 
 export interface VITAL extends Document {
-  //   userId: Types.ObjectId;
   userName: string;
   vitalID: VitalType;
   value: number;
@@ -16,11 +15,6 @@ export interface VITAL extends Document {
 
 const vitalSchema = new Schema<VITAL>(
   {
-    // userId: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   required: true,
-    //   ref: "User",
-    // },
     userName: {
       type: String,
       ref: "User",
