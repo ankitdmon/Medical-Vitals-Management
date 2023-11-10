@@ -25,12 +25,17 @@ export const aggregateVitals = async (req: Request, res: Response) => {
       ...(await Promise.all(aggregatePromises))
     );
 
-    return successResponse(req, res, {
-      username,
-      aggregates,
-      start_timestamp,
-      end_timestamp,
-    });
+    return successResponse(
+      req,
+      res,
+      {
+        username,
+        aggregates,
+        start_timestamp,
+        end_timestamp,
+      },
+      "Aggregate fetched successfully."
+    );
   } catch (err) {
     return errorResponse(req, res, err as Error);
   }
@@ -55,13 +60,18 @@ export const populationInsight = async (req: Request, res: Response) => {
 
     const percentile = calculatePercentile(userAverage, populationValues);
 
-    return successResponse(req, res, {
-      username,
-      vital_id,
-      start_timestamp,
-      end_timestamp,
-      insight: `Your ${vital_id} is in the ${percentile}th percentile.`,
-    });
+    return successResponse(
+      req,
+      res,
+      {
+        username,
+        vital_id,
+        start_timestamp,
+        end_timestamp,
+        insight: `Your ${vital_id} is in the ${percentile}th percentile.`,
+      },
+      "Population insight fetched successfully."
+    );
   } catch (err) {
     return errorResponse(req, res, err as Error);
   }
