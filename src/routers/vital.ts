@@ -12,7 +12,7 @@ import {
   EDIT_VITAL,
   GET_VITAL,
   INSERT_VITAL,
-} from "../validations/endpoints";
+} from "../constants/endpoints";
 
 const router = express.Router();
 

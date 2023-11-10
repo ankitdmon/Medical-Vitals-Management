@@ -6,7 +6,7 @@ import {
   INSIGHT_ROUTE,
   USER_ROUTE,
   VITAL_ROUTE,
-} from "../validations/endpoints";
+} from "../constants/endpoints";
 
 const app = express();
 

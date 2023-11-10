@@ -2,7 +2,7 @@ import express from "express";
 import * as userCon from "../controllers/user";
 import { createUserSchema, getUserSchema } from "../validations/validation";
 import { ValidationSource, validateSchema } from "../middleware/yup";
-import { CREATE_USER, GET_USER } from "../validations/endpoints";
+import { CREATE_USER, GET_USER } from "../constants/endpoints";
 
 const router = express.Router();
 

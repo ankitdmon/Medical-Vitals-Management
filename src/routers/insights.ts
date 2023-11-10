@@ -5,7 +5,7 @@ import {
   aggregateSchema,
   populationInsightSchema,
 } from "../validations/validation";
-import { AGGREGATE, POPULATE } from "../validations/endpoints";
+import { AGGREGATE, POPULATE } from "../constants/endpoints";
 
 const router = express.Router();
 
