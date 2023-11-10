@@ -14,7 +14,10 @@ export enum CommandType {
 }
 
 export const createUserSchema = yup.object().shape({
-  command: yup.string().required().oneOf([CommandType.CREATE_USER]),
+  command: yup
+    .string()
+    .required("Invalid Command Type")
+    .oneOf([CommandType.CREATE_USER]),
   userName: yup.string().required(),
   age: yup.number().required(),
   medicalConditions: yup.array(),
@@ -22,54 +25,89 @@ export const createUserSchema = yup.object().shape({
 });
 
 export const getUserSchema = yup.object().shape({
-  command: yup.string().required().oneOf([CommandType.GET_USER]),
+  command: yup
+    .string()
+    .required("Invalid Command Type")
+    .oneOf([CommandType.GET_USER]),
   userName: yup.string().required(),
 });
 
 export const insertVitalSchema = yup.object().shape({
-  command: yup.string().required().oneOf([CommandType.INSERT_VITAL]),
+  command: yup
+    .string()
+    .required("Invalid Command Type")
+    .oneOf([CommandType.INSERT_VITAL]),
   userName: yup.string().required(),
-  vitalID: yup.string().oneOf(Object.values(VitalType)).required(),
+  vitalID: yup
+    .string()
+    .oneOf(Object.values(VitalType))
+    .required("Invalid Vital_ID"),
   value: yup.number().required(),
   timestamp: yup.string().required(),
 });
 
 export const getVitalsSchema = yup.object().shape({
-  command: yup.string().required().oneOf([CommandType.GET_VITALS]),
+  command: yup
+    .string()
+    .required("Invalid Command Type")
+    .oneOf([CommandType.GET_VITALS]),
   userName: yup.string().required(),
   period: yup.array().required(),
 });
 
 export const editVitalSchema = yup.object().shape({
-  command: yup.string().required().oneOf([CommandType.EDIT_VITAL]),
+  command: yup
+    .string()
+    .required("Invalid Command Type")
+    .oneOf([CommandType.EDIT_VITAL]),
   userName: yup.string().required(),
-  vitalID: yup.string().required().oneOf(Object.values(VitalType)),
+  vitalID: yup
+    .string()
+    .required("Invalid Vital_ID")
+    .oneOf(Object.values(VitalType)),
   timestamp: yup.date().required(),
   newValue: yup.number().required(),
 });
 
 export const deleteVitalsSchema = yup.object().shape({
-  command: yup.string().required().oneOf([CommandType.DELETE_VITALS]),
+  command: yup
+    .string()
+    .required("Invalid Command Type")
+    .oneOf([CommandType.DELETE_VITALS]),
   userName: yup.string().required(),
-  vitalID: yup.string().required().oneOf(Object.values(VitalType)),
+  vitalID: yup
+    .string()
+    .required("Invalid Vital_ID")
+    .oneOf(Object.values(VitalType)),
   timestamp: yup.date().required(),
 });
 
 export const aggregateSchema = yup.object().shape({
-  command: yup.string().required().oneOf([CommandType.AGGREGATE]),
+  command: yup
+    .string()
+    .required("Invalid Command Type")
+    .oneOf([CommandType.AGGREGATE]),
   username: yup.string().required(),
   vital_ids: yup
     .array()
-    .of(yup.string().required().oneOf(Object.values(VitalType)))
+    .of(
+      yup.string().required("Invalid Vital_ID").oneOf(Object.values(VitalType))
+    )
     .required(),
   start_timestamp: yup.date().required(),
   end_timestamp: yup.date().required(),
 });
 
 export const populationInsightSchema = yup.object().shape({
-  command: yup.string().required().oneOf([CommandType.POPULATION_INSIGHT]),
+  command: yup
+    .string()
+    .required("Invalid Command Type")
+    .oneOf([CommandType.POPULATION_INSIGHT]),
   username: yup.string().required(),
-  vital_id: yup.string().required().oneOf(Object.values(VitalType)),
+  vital_id: yup
+    .string()
+    .required("Invalid Vital_ID")
+    .oneOf(Object.values(VitalType)),
   start_timestamp: yup.date().required(),
   end_timestamp: yup.date().required(),
 });

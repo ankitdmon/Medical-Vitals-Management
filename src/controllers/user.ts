@@ -5,17 +5,19 @@ import {
   successResponse,
 } from "../helper/response";
 import { userModel } from "../models/user";
-import { CommandType } from "../validations/validation";
 
 export const createUser = async (req: Request, res: Response) => {
   try {
     const { userName, age, command, gender } = req.body;
-    if (command === CommandType.CREATE_USER) {
-      const user = await userModel.create({ userName, age, gender });
-      return successResponse(req, res, user, `User ${userName} created.`);
-    } else {
-      return failResponse(req, res, `Invalid command type ${command}`);
+    const isValid = await userModel.findOne({
+      userName: userName,
+      deletedAt: null,
+    });
+    if (isValid) {
+      return failResponse(req, res, `UserName ${userName} is already taken.`);
     }
+    await userModel.create({ userName, age, gender });
+    return successResponse(req, res, `User ${userName} created.`);
   } catch (err) {
     return errorResponse(req, res, err as Error);
   }
