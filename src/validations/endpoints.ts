@@ -1,4 +1,6 @@
-export const MAIN = "/eka-care";
+export const USER_ROUTE = "/eka-care";
+export const VITAL_ROUTE = "/eka-care";
+export const INSIGHT_ROUTE = "/eka-care";
 export const AGGREGATE = "/aggregate";
 export const POPULATE = "/populate";
 export const CREATE_USER = "/user";
