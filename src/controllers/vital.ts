@@ -48,12 +48,11 @@ export const vitals = async (req: Request, res: Response) => {
           $lte: endDate,
         },
         deletedAt: null,
-      }).select("vitalId value timestamp");
+      }).select("vitalID value timestamp");
       return successResponse(req, res, vitals, `All vitals for ${userName}`);
     } else {
       return failResponse(req, res, `Invalid command type ${command}`);
     }
-    return successResponse(req, res, "user created");
   } catch (err) {
     return errorResponse(req, res, err as Error);
   }
