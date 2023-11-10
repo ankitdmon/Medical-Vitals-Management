@@ -1,4 +1,4 @@
-import mongoose, { Document, Schema, Types } from "mongoose";
+import mongoose, { Document, Schema } from "mongoose";
 
 enum VitalType {
   HEART_RATE = "HEART_RATE",
@@ -6,22 +6,24 @@ enum VitalType {
 }
 
 export interface VITAL extends Document {
-  userId: Types.ObjectId;
-  username: string;
+  //   userId: Types.ObjectId;
+  userName: string;
   vitalID: VitalType;
   value: number;
+  timestamp: Date;
   deletedAt: Date | null;
 }
 
 const vitalSchema = new Schema<VITAL>(
   {
-    userId: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: "User",
-    },
-    username: {
+    // userId: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   required: true,
+    //   ref: "User",
+    // },
+    userName: {
       type: String,
+      ref: "User",
       required: true,
     },
     vitalID: {
@@ -31,6 +33,10 @@ const vitalSchema = new Schema<VITAL>(
     },
     value: {
       type: Number,
+      required: true,
+    },
+    timestamp: {
+      type: Date,
       required: true,
     },
     deletedAt: {

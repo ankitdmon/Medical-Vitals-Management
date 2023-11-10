@@ -3,12 +3,12 @@ import * as vitalCon from "../controllers/vital";
 
 const router = express.Router();
 
-router.post("vital/:userId", vitalCon.createVital);
+router.post("/vital", vitalCon.createVital);
 
-router.get("vital", vitalCon.vitals);
+router.get("/vital", vitalCon.vitals);
 
-router.put("vital/:id", vitalCon.updateVital);
+router.put("/vital", vitalCon.updateVital);
 
-router.delete("vital/:id", vitalCon.deleteVital);
+router.delete("/vital", vitalCon.deleteVital);
 
 export default router;
