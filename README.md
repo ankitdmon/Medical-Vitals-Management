@@ -112,7 +112,7 @@ The project structure is organized as follows:
   - **validations/**
     - **validation.ts**: Validation schemas using Yup.
 
-## Installation Steps
+## Installation & Run Steps
 
 ### Install Node
 
@@ -149,6 +149,19 @@ npm install
 
 This command will download and install the necessary dependencies for your project.
 
+### Create **.ENV** file
+- Define ***PORT***
+```
+    PORT=8080
+```
+- Define ***DB_URI***
+
+Here you need to add your mongoDB URL. Which you can get from mongodb Atlas server. [MongoDB Official Website](https://www.mongodb.com/)
+
+```
+    DB_URI="mongodb+srv://USERNAME:*****@cluster0.ma9cd2w.mongodb.net/"
+```
+
 ## Verify Installation
 To verify that all dependencies are installed successfully, you can run:
 ```
@@ -160,42 +173,49 @@ This will display a list of all the installed Node modules and their versions.
 
 ## API Endpoints
 
+All APIs utilize the POST method for enhanced security, requiring data to be transmitted through the request payload.
+
 ### User-related Endpoints:
 
-- **POST /user:** Create a new user.  
-    ``` http://localhost:8080/eka-care/user ```
+- **POST user/createUser:** Create a new user.  
+    ``` http://localhost:8080/user/createUser ```
 
-- **GET /user :** Get user details by username.
-    ``` http://localhost:8080/eka-care/user ```
+- **POST user/getUser :** Get user details by username.
+    ``` http://localhost:8080/user/getUser ```
 
 ### Vital-related Endpoints:
 
-- **POST /vital :** Insert vital data.
+- **POST vital/insertVital :** Insert vital data.
 
-    ``` http://localhost:8080/eka-care/vital ```
-- **GET /vitals :** Get vitals for a specific user.
+    ``` http://localhost:8080/vital/insertVital ```
 
-    ``` http://localhost:8080/eka-care/vital ```
-- **PUT /vital :** Edit vital data.
+- **POST vital/getVital :** Get vitals for a specific user.
 
-    ``` http://localhost:8080/eka-care/vital ```
-- **DELETE /vital :** Delete vital data.
+    ``` http://localhost:8080/vital/getVital ```
 
-    ``` http://localhost:8080/eka-care/vital ```
+- **POST vital/updateVital :** Edit vital data.
+
+    ``` http://localhost:8080/vital/updateVital ```
+
+- **POST vital/removeVital :** Delete vital data.
+
+    ``` http://localhost:8080/vital/removeVital ```
 
 ### Insights-related Endpoints:
 
-- **GET /insights/aggregate:** Aggregate vital data.
+- **POST /insight/aggregate:** Aggregate vital data.
 
-    ``` http://localhost:8080/eka-care/aggregate ```
-- **GET /insights/population:** Get population insights.
+    ``` http://localhost:8080/insight/aggregate ```
 
-    ``` http://localhost:8080/eka-care/populate ```
+- **POST /insight/population:** Get population insights.
+
+    ``` http://localhost:8080/insight/populate ```
 
 
 ## Request & Response
 
-- **POST /user:** Create a new user. 
+- **POST /user/createUser:** Create a new user. 
+    ``` http://localhost:8080/user/createUser ```
 ### Request
     
     {
@@ -211,7 +231,8 @@ This will display a list of all the installed Node modules and their versions.
         "message": "Success"
     }
 
-- **GET /user :** Get user details by username.
+- **POST /user/getUser :** Get user details by username.
+    ``` http://localhost:8080/user/getUser ```
 ### Request
     
     {
@@ -232,7 +253,8 @@ This will display a list of all the installed Node modules and their versions.
     }
 
 
-- **POST /vital :** Insert vital data.
+- **POST /vital/insertVital :** Insert vital data.
+    ``` http://localhost:8080/vital/insertVital ```
 ### Request
     
     {
@@ -249,7 +271,8 @@ This will display a list of all the installed Node modules and their versions.
         "message": "Success"
     }
 
-- **GET /vitals :** Get vitals for a specific user.
+- **POST /vital/getVital :** Get vitals for a specific user.
+    ``` http://localhost:8080/vital/getVital ```
 ### Request
     
     {
@@ -301,7 +324,8 @@ This will display a list of all the installed Node modules and their versions.
         "message": "All vitals for JohnDoe"
     }
 
-- **PUT /vital :** Edit vital data.
+- **POST /vital/updateVital :** Edit vital data.
+    ``` http://localhost:8080/vital/updateVital ```
 ### Request
     {
         "command": "edit_vital",
@@ -317,7 +341,8 @@ This will display a list of all the installed Node modules and their versions.
         "message": "Success"
     }
 
-- **DELETE /vital :** Delete vital data.
+- **POST /vital/removeVital :** Delete vital data.
+    ``` http://localhost:8080/vital/removeVital ```
 ### Request
     {
         "command": "delete_vitals",
@@ -332,7 +357,8 @@ This will display a list of all the installed Node modules and their versions.
         "message": "Success"
     }
 
-- **GET /insights/aggregate:** Aggregate vital data.
+- **POST /insight/aggregate:** Aggregate vital data.
+    ``` http://localhost:8080/insight/aggregate ```
 ### Request
     {
         "command": "aggregate",
@@ -356,7 +382,8 @@ This will display a list of all the installed Node modules and their versions.
         "message": "Success"
     }
 
-- **GET /insights/population:** Get population insights.
+- **POST /insight/population:** Get population insights.
+    ``` http://localhost:8080/insight/populate ```
 ### Request
     {
         "command": "population_insight",
