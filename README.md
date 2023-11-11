@@ -224,11 +224,30 @@ All APIs utilize the POST method for enhanced security, requiring data to be tra
         "age": 23,
         "gender": "Male"
     }
-### Response
+### Success Response
     {
         "status": "success",
         "data": "User JohnDe created.",
         "message": "Success"
+    }
+
+### Fail Response
+    {
+        "status": "failure",
+        "data": null,
+        "message": "Failure",
+        "errorData": "UserName JohnDe is already taken.",
+        "extra": {}
+    }
+
+### Error Response 
+If command is wrong
+    {
+        "status": "failure",
+        "data": null,
+        "message": "Failure",
+        "errorData": "Validation error",
+        "extra": {}
     }
 
 - **POST /user/getUser :** Get user details by username.
@@ -239,7 +258,7 @@ All APIs utilize the POST method for enhanced security, requiring data to be tra
         "command":"get_user",
         "userName":"JohnDoe1"
     }
-### Response
+### Success Response
     {
         "status": "success",
         "data": {
@@ -250,6 +269,15 @@ All APIs utilize the POST method for enhanced security, requiring data to be tra
             "medicalConditions": []
         },
         "message": "User JohnDoe1."
+    }
+
+### Fail Response
+    {
+        "status": "failure",
+        "data": null,
+        "message": "Failure",
+        "errorData": "Validation error",
+        "extra": {}
     }
 
 
