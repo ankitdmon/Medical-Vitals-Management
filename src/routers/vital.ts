@@ -22,19 +22,19 @@ router.post(
   vitalCon.createVital
 );
 
-router.get(
+router.post(
   GET_VITAL,
   validateSchema(getVitalsSchema, ValidationSource.BODY),
   vitalCon.vitals
 );
 
-router.put(
+router.post(
   EDIT_VITAL,
   validateSchema(editVitalSchema, ValidationSource.BODY),
   vitalCon.updateVital
 );
 
-router.delete(
+router.post(
   DELETE_VITALS,
   validateSchema(deleteVitalsSchema, ValidationSource.BODY),
   vitalCon.deleteVital

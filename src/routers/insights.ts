@@ -9,13 +9,13 @@ import { AGGREGATE, POPULATE } from "../constants/endpoints";
 
 const router = express.Router();
 
-router.get(
+router.post(
   AGGREGATE,
   validateSchema(aggregateSchema, ValidationSource.BODY),
   insightCon.aggregateVitals
 );
 
-router.get(
+router.post(
   POPULATE,
   validateSchema(populationInsightSchema, ValidationSource.BODY),
   insightCon.populationInsight

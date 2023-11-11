@@ -12,7 +12,7 @@ router.post(
   userCon.createUser
 );
 
-router.get(
+router.post(
   GET_USER,
   validateSchema(getUserSchema, ValidationSource.BODY),
   userCon.getUser

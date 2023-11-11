@@ -32,7 +32,7 @@ export const getUser = async (req: Request, res: Response) => {
         deletedAt: null,
       })
       .select("-createdAt -deletedAt -updatedAt");
-    return successResponse(req, res, user, `User ${userName} created.`);
+    return successResponse(req, res, user, `User ${userName}.`);
   } catch (err) {
     return errorResponse(req, res, err as Error);
   }
